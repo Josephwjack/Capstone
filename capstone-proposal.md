@@ -12,8 +12,10 @@
 - Site is hosted on firebase
 
 **What tools, frameworks, libraries, APIs, modules and/or other resources (whatever is specific to your track, and your language) will you use to create this MVP? List them all here. Be specific.** 
-- This will be a React based application. I plan on using Firebase for authorization and authentication. 
-- Chakra UI or Material UI along with styled components for styling. 
+- This will be a React based application. 
+- I plan on using Firebase for authorization and authentication and hosting.
+- React-Redux 
+- Most likely React-Bootstrap & Grommet UI... Maybe MUI. 
 - This application will use a google maps API (Geocoding). Beyond that I'm sure there will be more libraries used I'll come back and edit this. 
 
 **If you finish developing the minimum viable product (MVP) with time to spare, what will you work on next? Describe these features here: Be specific.**

@@ -19,6 +19,7 @@
 * 9:10-10:15: Research UI libraries that are responsive, well documented, alot of components and customizable.
 * 10:15: Research Google API's Geocoding and Geolocation
 * 11:00: Signed up for google api account , acquied key, looking at tutorials on using geocoding with react.
+* 11:50: Finish component diagram
 
 
 
