@@ -26,6 +26,7 @@
 * 2:30: Spent some time downloading and configuring vs studio and looking into api's with react to better plan my approach
 * 3:00: Creating logo for application
 * 4:20: Finished creating rough draft logo for application- further exploration into hooks and firebase
+* 4:58: Logging off for now- want to get headstart on HW to understand firebase
 
 
 
