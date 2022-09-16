@@ -23,6 +23,7 @@
 * 12:00: Create basic components based off diagram - taking lunch
 * 1:30: Don't know firebase yet so today installing necessary frameworks and more research
 * 2:30: Spent some time downloading and configuring vs studio and looking into api's with react to better plan my approach
+* 3:00: Creating logo for application
 
 
 
