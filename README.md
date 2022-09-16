@@ -1,6 +1,6 @@
 # Between Us 
 
-<div style="display: flex; justify-content: center width:200px"><img src="./src/Assets/logo-w-background.png"></div>
+<div style="display: flex; justify-content: center"><p align="center"><img src="./src/Assets/logo-w-background.png" width="50%" height="50%" ></p></div>
 
 #### Created By Joseph Jack
 <hr/>
