@@ -1,5 +1,5 @@
-# Capstone 
-**Possible names: (halfways/halfwaythere/midpointmeetup?)**
+# Between Us 
+
 
 #### Created By Joseph Jack
 <hr/>

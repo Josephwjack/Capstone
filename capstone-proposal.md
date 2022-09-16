@@ -1,6 +1,6 @@
  **Name of Student:** Joseph Jack
 
-**Name of Project:** Halfways/ Halfway There / Midpoint meetup ? Not 100% set on which one.
+**Name of Project:** Between Us | Was contemplating others but this sets it apart from similar sites and focuses on the effort between two friends to find a meeting point.
 
 **Project's Purpose or Goal: (What will it do for users?)** This application will take two inputs, an address for themselves and a friends address and find the halfway distance between them to meetup. It will then show a list of meetup spots near those coordinates.
 
