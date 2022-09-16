@@ -20,6 +20,10 @@
 * 10:15: Research Google API's Geocoding and Geolocation
 * 11:00: Signed up for google api account , acquied key, looking at tutorials on using geocoding with react.
 * 11:50: Finish component diagram
+* 12:00: Create basic components based off diagram - taking lunch
+* 1:30: Don't know firebase yet so today installing necessary frameworks and more research
+
+
 
 
 
