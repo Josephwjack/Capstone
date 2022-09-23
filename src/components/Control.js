@@ -11,7 +11,8 @@ function GetLocation() {
   const [showResult, setResult] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
- 
+  const [firstLocation, setFirstLocation] = useState([]);
+  const [secondLocation, setSecondLocation] = useState([]);
   
   // Geocode.setLanguage("en");
   // Geocode.setRegion("us");
