@@ -20,7 +20,7 @@ function GetLocation() {
       console.log(lat, lng);
     },
     (error) => {
-      setError(error);
+      setError(error.message);
     }
   );
 
