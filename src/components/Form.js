@@ -1,29 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import ReusableForm from './ReusableForm';
 
 
 function Form(props) {
- 
+  const [firstLocation, setFirstLocation] = useState("");
+  const [secondLocation, setSecondLocation] = useState("");
   
-  function handleNewSubmission(event){
+  function handleFirstLocation(event){
     event.preventDefault();
-    props.onNewSubmission({
-      firstAddress: event.target.firstAddress.value,
-      secondAddress: event.target.secondAddress.value
-    });
+      setFirstLocation(event.target.value); 
+  }
+
+  function handleSecondLocation(event){
+    event.preventDefault();
+      setSecondLocation(event.target.value);
   }
   
   return (
+    
     <React.Fragment>
-      <ReusableForm
-        formSubmissionHandler = {handleNewSubmission}
-        buttonText = "Search"/>
+      <h1>This is the Form</h1>
+        <form onSubmit={(event)=>props.onNewSubmission(event, firstLocation, secondLocation)}>
+        <input onChange={handleFirstLocation}
+          type='text'
+          name='firstLocation'
+          />
+        <input onChange={handleSecondLocation}
+          type='text'
+          name='secondLocation'
+          />
+        <button type='submit'>Find your halfway</button>
+      </form>
+    </React.Fragment>
+  );
+}
     
 
-    </React.Fragment>
-    )
-  }
+ 
 Form.propTypes = {
   onNewSubmission: PropTypes.func,
 };
