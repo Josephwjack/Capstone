@@ -11,32 +11,33 @@ function GetLocation() {
   const [showResult, setResult] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
-  const [myLocation, setMyLocation] = useState("");
-  const [secondLocation, setSecondLocation] = useState("")
+ 
   
-  Geocode.setLanguage("en");
-  Geocode.setRegion("us");
-
-  Geocode.fromAddress("").then(
-    (response) => {
-      const result = response.results[0].geometry.location;
-      console.log(result);
-      // setMyLocation.toString(lat, lng)
-    },
-    (error) => {
-      setError(error.message);
-    }
-  );
-
-  // handleMiddlePoint = () => {
-  //   mylocation.lat
-  // }
-
+  // Geocode.setLanguage("en");
+  // Geocode.setRegion("us");
   
 
-  return (
-    {showResult}
-  )
+  // Geocode.fromAddress().then(
+  //   (response) => {
+  //     const result = response.results[0].geometry.location;
+  //     console.log(result);
+  //     setMyLocation(result);
+  //     console.log(myLocation);
+  //   },
+  //   (error) => {
+  //     setError(error.message);
+  //   }
+  // );
+  
+
+
+  
+
+  
+
+ 
+    
+  
 }
 
 export default GetLocation;

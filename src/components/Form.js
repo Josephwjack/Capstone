@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
-import ReusableForm from './ReusableForm';
+
 
 
 function Form(props) {
-  const [firstLocation, setFirstLocation] = useState("");
-  const [secondLocation, setSecondLocation] = useState("");
+  const [location1, setLocation1] = useState("");
+  const [location2, setLocation2] = useState("");
   
   function handleFirstLocation(event){
     event.preventDefault();
-      setFirstLocation(event.target.value); 
+      setLocation1(event.target.value); 
   }
 
   function handleSecondLocation(event){
     event.preventDefault();
-      setSecondLocation(event.target.value);
+      setLocation2(event.target.value);
   }
   
   return (
     
     <React.Fragment>
       <h1>This is the Form</h1>
-        <form onSubmit={(event)=>props.onNewSubmission(event, firstLocation, secondLocation)}>
+        <form onSubmit={(event)=>props.onNewSubmission(event, location1, location2)}>
         <input onChange={handleFirstLocation}
           type='text'
           name='firstLocation'
