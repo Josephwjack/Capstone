@@ -14,17 +14,19 @@ function GetLocation() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
 
-  Geocode.fromAddress("seattle, wa").then(
+  Geocode.fromAddress().then(
     (response) => {
       const { lat, lng } = response.results[0].geometry.location;
       console.log(lat, lng);
     },
     (error) => {
-      console.log
+      setError(error);
     }
-  )
+  );
 
-
+  handleMiddlePoint = () => {
+    mylocation.lat
+  }
 }
 
 export default GetLocation;
