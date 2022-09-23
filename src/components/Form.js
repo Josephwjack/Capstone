@@ -25,7 +25,7 @@ function Form(props) {
     )
   }
 Form.propTypes = {
-  onFormSubmission: PropTypes.func,
+  onNewSubmission: PropTypes.func,
 };
 
 export default Form;

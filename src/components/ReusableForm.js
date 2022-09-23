@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Form from './Form';
+
 
 
 
@@ -9,12 +9,12 @@ function ReusableForm(props){
   return (
     <React.Fragment>
       <h1>This is the Form</h1>
-        <form onSubmit={(e)=> props.onFormSubmission(e)}>
-        <input onChange={handleFirstLocation}
+        <form onSubmit={props.formSubmissionHandler}>
+        <input 
           type='text'
           name='firstAddress'
           />
-        <input onChange={handleSecondLocation}
+        <input 
           type='text'
           name='secondAddress'
           />
