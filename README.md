@@ -1,6 +1,6 @@
 # Between Us 
 
-<div style="display: flex; justify-content: center"><img src="./src/Assets/logo-w-background.png"></div>
+<div style="display: flex; justify-content: center"><p align="center"><img src="./src/Assets/logo-w-background.png" width="50%" height="50%" ></p></div>
 
 #### Created By Joseph Jack
 <hr/>
@@ -28,6 +28,7 @@
 * 2:30: Spent some time downloading and configuring vs studio and looking into api's with react to better plan my approach
 * 3:00: Creating logo for application
 * 4:20: Finished creating rough draft logo for application- further exploration into hooks and firebase
+* 4:58: Logging off for now- want to get headstart on HW to understand firebase
 
 #### Friday, 9/23
 
