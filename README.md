@@ -11,6 +11,8 @@
 
 ## Component Diagrams
 
+<div style="display: flex; justify-content: center"><img src="./diagram.drawio.png"></div>
+
 ### Research & Planning Log
 
 #### Friday, 9/16
