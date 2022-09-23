@@ -32,6 +32,7 @@
 #### Friday, 9/23
 
 * 10:22: Researching documentation on Api and how to implement (and how to make multiple calls / change data before final call)
+* 10:45: For dynamic requests google has a constructor and method built in that returns an object literal - looking into that
 
 
 

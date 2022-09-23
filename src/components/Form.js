@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 
 function Form(props) {
-  const [myLocation, setMyLocation] = useState("47.608013, -122.335167")
-  const [secondLocation, setSecondLocation] = useState("44.058174, -121.315308");
+  const [myLocation, setMyLocation] = useState("")
+  const [secondLocation, setSecondLocation] = useState("");
  
 
   function handleLocationChange(e) {
