@@ -29,7 +29,9 @@
 * 3:00: Creating logo for application
 * 4:20: Finished creating rough draft logo for application- further exploration into hooks and firebase
 
+#### Friday, 9/23
 
+* 10:22: Researching documentation on Api and how to implement (and how to make multiple calls / change data before final call)
 
 
 
