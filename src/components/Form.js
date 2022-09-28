@@ -9,7 +9,7 @@ function Form(props) {
   
   function handleFirstLocation(event){
     event.preventDefault();
-      setLocation1(event.target.value); 
+      setLocation1("seattle, wa"); 
   }
 
   function handleSecondLocation(event){
@@ -21,7 +21,7 @@ function Form(props) {
     
     <React.Fragment>
       <h1>This is the Form</h1>
-        <form onSubmit={(event)=>props.onFormSubmission(event)}>
+        <form onSubmit={(event)=>props.onFormSubmission(event, location1, location2)}>
         <input onChange={handleFirstLocation}
           type='text'
           name='firstLocation'

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { GoogleMap } from '@react-google-maps/api';
-import Geocode from 'react-geocode';
+import Geocode, { fromAddress } from 'react-geocode';
 import Form from './Form';
 import Result from './Result';
+
 
 
 
@@ -14,82 +15,38 @@ function GetLocation() {
   const [error, setError] = useState(null);
   const [firstLocation, setFirstLocation] = useState([]);
   const [secondLocation, setSecondLocation] = useState([]);
-  let address = "seattle"
-
-  const makeApiCall = async (call) => {
-    let response;
-    try {
-      response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${call.address}&key=${process.env.REACT_APP_API_KEY}`
-      )
-    } catch(error){
-      console.log(error, "fetch error");
-    }
-    let data;
-    try {
-      data = await response.json();
-    } catch(error){
-      console.log(error, "response error");
-    }
-    let firstCoords = data.results.map(ele => {
-      return {location: ele.geometry.location}
-    });
-    console.log(firstCoords);
-    setFirstLocation(firstCoords);
-    setIsLoaded(true)
-  };
+  
 
   
 
-  const formSubmissionHandler = (e, address) => {
-    e.preventDefault();
-    makeApiCall({
-      address: address,
-      
-    });
-    setFormVisibleOnPage(!formVisibleOnPage);
-    return false;
-  }
+  useEffect(() => {
+    console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=seattle&key=${process.env.REACT_APP_API_KEY}
+    `)
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=seattle&key=${process.env.REACT_APP_API_KEY}
+    `)
+      .then((response) => {
+        if (!response.ok) {
+          console.log("response");
+          throw new Error(`${response.status}: ${response.statusText}`);
+        } else {
+          return response.json()
+        }
+      })
+      .then((jsonifiedResponse) => {
+        const latLng1 = (jsonifiedResponse.results[0].geometry.location);
+        console.log(latLng1);
+        setFirstLocation(latLng1)
+          
+        })
+        setIsLoaded(true);   
+      // .catch((error) => {
+      //   setError(error.message)
+      //   setIsLoaded(true)
+      // });
+  }, [])
 
-  // useEffect(() => {
-  //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=seattle+wa&key=${process.env.REACT_APP_API_KEY}
-  //   `)
-  //     .then(response => {
-  //       if (!response.ok) {
-  //         throw new Error(`${response.status}: ${response.statusText}`);
-  //       } else {
-  //         return response.json()
-  //       }
-  //     })
-  //     .then((jsonifiedResponse) => {
-  //       let addy1 = jsonifiedResponse.results.map(ele => {
-  //         return { lat: ele.lat, lng: ele.lng}
-  //       });
-  //       setFirstLocation(addy1);
-  //       setIsLoaded(true)    
-  //     })
-  //     .catch((error) => {
-  //       setError(error.message)
-  //       setIsLoaded(true)
-  //     });
-  // }, [])
-
-
-  // Geocode.setLanguage("en");
-  // Geocode.setRegion("us");
   
   
-  // Geocode.fromAddress("seattle, wa").then(
-  //   (response) => {
-  //     const result = response.results[0].geometry.location;
-  //     console.log(result);
-  //     setFirstLocation(result);
-  //     console.log(firstLocation);
-  //   },
-  //   (error) => {
-  //     setError(error.message);
-  //   }
-  // );
   let currentlyVisibleState = null;
     return (
       <React.Fragment>
