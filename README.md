@@ -6,7 +6,7 @@
 <hr/>
 
 ## Description
-
+Between Us takes the input of two addresses and finds the halfway point to meetup and displays points of interest. Filter points of interest based on where you'd like to meetup nearby those coordinates.
 <hr/>
 
 ## Component Diagrams
