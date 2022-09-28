@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 
 
 function Form(props) {
-  const [location1, setLocation1] = useState("");
+  const [location1, setLocation1] = useState(null);
   const [location2, setLocation2] = useState("");
   
   function handleFirstLocation(event){
@@ -16,12 +16,12 @@ function Form(props) {
     event.preventDefault();
       setLocation2(event.target.value);
   }
-  
+ 
   return (
     
     <React.Fragment>
       <h1>This is the Form</h1>
-        <form onSubmit={(event)=>props.onNewSubmission(event, location1, location2)}>
+        <form onSubmit={(event)=>props.onFormSubmission(event, location1, location2)}>
         <input onChange={handleFirstLocation}
           type='text'
           name='firstLocation'
@@ -39,7 +39,7 @@ function Form(props) {
 
  
 Form.propTypes = {
-  onNewSubmission: PropTypes.func,
+  onFormSubmission: PropTypes.func,
 };
 
 export default Form;
