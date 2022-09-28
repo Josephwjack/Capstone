@@ -21,7 +21,7 @@ function Form(props) {
     
     <React.Fragment>
       <h1>This is the Form</h1>
-        <form onSubmit={(event)=>props.onFormSubmission(event, location1, location2)}>
+        <form onSubmit={(event)=>props.onFormSubmission(event)}>
         <input onChange={handleFirstLocation}
           type='text'
           name='firstLocation'
