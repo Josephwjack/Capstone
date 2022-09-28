@@ -14,13 +14,13 @@ function GetLocation() {
   const [error, setError] = useState(null);
   const [firstLocation, setFirstLocation] = useState([]);
   const [secondLocation, setSecondLocation] = useState([]);
-  
+  let address = "seattle"
 
   const makeApiCall = async (call) => {
     let response;
     try {
       response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${call.location1}&key=${process.env.REACT_APP_API_KEY}`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${call.address}&key=${process.env.REACT_APP_API_KEY}`
       )
     } catch(error){
       console.log(error, "fetch error");
@@ -34,14 +34,17 @@ function GetLocation() {
     let firstCoords = data.results.map(ele => {
       return {location: ele.geometry.location}
     });
+    console.log(firstCoords);
     setFirstLocation(firstCoords);
     setIsLoaded(true)
   };
 
-  const formSubmissionHandler = (e, location1) => {
+  
+
+  const formSubmissionHandler = (e, address) => {
     e.preventDefault();
     makeApiCall({
-      location1: location1,
+      address: address,
       
     });
     setFormVisibleOnPage(!formVisibleOnPage);
@@ -87,7 +90,7 @@ function GetLocation() {
   //     setError(error.message);
   //   }
   // );
-  
+  let currentlyVisibleState = null;
     return (
       <React.Fragment>
         
