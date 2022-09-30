@@ -16,7 +16,7 @@ function GetLocation() {
   const [firstLocation, setFirstLocation] = useState([]);
   const [secondLocation, setSecondLocation] = useState([]);
   
-
+  setFirstLocation(location1);
   
 
   useEffect(() => {
@@ -47,10 +47,10 @@ function GetLocation() {
   }, [])
 
   useEffect(() => {
-    console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=new+york&key=${process.env.REACT_APP_API_KEY}
+    console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=${location2}&key=${process.env.REACT_APP_API_KEY}
     `)
                                                           // VV will put ${location2}
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=new+york&key=${process.env.REACT_APP_API_KEY}
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location2}&key=${process.env.REACT_APP_API_KEY}
     `)
       .then((response) => {
         if (!response.ok) {
@@ -62,22 +62,20 @@ function GetLocation() {
       })
       .then((jsonifiedResponse) => {
         const latLng2 = (jsonifiedResponse.results[0].geometry.location);
-        console.log(latLng2);
         setSecondLocation(latLng2)
-          
+        console.log(secondLocation);     
         })
         setIsLoaded(true);   
   }, [])
   
   
-  const handleFindingResultCoordinates = (firstLocation, secondLocation) => {
-    let lat3 = (firstLocation.lat + secondLocation.lat) / 2
-    let lng3 = (firstLocation.lng + secondLocation.lng) / 2
+  const handleFindingResultCoordinates = (latLng1, latLng2) => {
+    let lat3 = (latLng1.lat + latLng2.lat) / 2
+    let lng3 = (latLng1.lng + latLng2.lng) / 2
     const finalCoords = (lat3, lng3)
     console.log(finalCoords);
-    
     setIsLoaded(true);
-    return finalCoords;
+    
     
   }
 
@@ -90,10 +88,22 @@ function GetLocation() {
   
   
   let currentlyVisibleState = null;
+  if (error) {
+    return <h1>Error: </h1>;
+
+  } else if (!isLoaded) {
+    return <h1>...LOADING...</h1>;
+  } if (formVisibleOnPage) {
+    currentlyVisibleState = <Form onFormSubmission={formSubmissionHandler}/>
+  } else if (!!showResult) {
+    currentlyVisibleState = <Result resultLocation={showResult}/>
+  }
+  
+  
     return (
       <React.Fragment>
         
-        <h1>Location</h1>
+        <h1>Return</h1>
         {currentlyVisibleState}
       </React.Fragment>
     )
