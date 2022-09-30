@@ -5,7 +5,7 @@ import { PropTypes } from 'prop-types';
 
 function Form(props) {
   const [location1, setLocation1] = useState("seattle, wa");
-  const [location2, setLocation2] = useState("new york");
+  const [location2, setLocation2] = useState("");
   
   
   

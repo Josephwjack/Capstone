@@ -3,6 +3,7 @@ import { GoogleMap } from '@react-google-maps/api';
 import Geocode, { fromAddress } from 'react-geocode';
 import Form from './Form';
 import Result from './Result';
+import { map } from '@firebase/util';
 
 
 
@@ -16,88 +17,111 @@ function GetLocation() {
   const [firstLocation, setFirstLocation] = useState([]);
   const [secondLocation, setSecondLocation] = useState([]);
   
-  setFirstLocation(location1);
+  async function GetData(){
+    const url1 = (`https://maps.googleapis.com/maps/api/geocode/json?address=seattle&key=${process.env.REACT_APP_API_KEY}`)
+    const url2 = (`https://maps.googleapis.com/maps/api/geocode/json?address=new+york&key=${process.env.REACT_APP_API_KEY}`)
+
+    const responses = await Promise.all([fetch(url1), fetch(url2)])
+
+    const data1 = await responses[0].json()
+    const data2 = await responses[1].json()
+
+    let firstSet = data1.results.map( ele => {
+      return {lat: ele.geometry.location.lat, lng: ele.geometry.location.lng}
+    })
+    let secondSet = data2.results.map( ele => {
+      return {lat: ele.geometry.location.lat, lng: ele.geometry.location.lng}
+    })
+    console.log(firstSet);
+    console.log(secondSet);
+    let lat3 = (firstSet[0].lat + secondSet[0].lat) / 2;
+    let lng3 = (firstSet[0].lng + secondSet[0].lng) / 2;
+    console.log(lat3);
+    let resultCoordinates = {lat3, lng3};
+    Object.values(resultCoordinates)
+    
+    
+    console.log(resultCoordinates);
+    
+  }
+  GetData()
   
 
-  useEffect(() => {
-    console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=seattle&key=${process.env.REACT_APP_API_KEY}
-    `)
-                                                            // will put VV ${location1} from form?
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=seattle&key=${process.env.REACT_APP_API_KEY}
-    `)
-      .then((response) => {
-        if (!response.ok) {
-          console.log("response");
-          throw new Error(`${response.status}: ${response.statusText}`);
-        } else {
-          return response.json()
-        }
-      })
-      .then((jsonifiedResponse) => {
-        const latLng1 = (jsonifiedResponse.results[0].geometry.location);
-        console.log(latLng1);
-        setFirstLocation(latLng1)
+  // useEffect(() => {
+  //   console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=seattle&key=${process.env.REACT_APP_API_KEY}
+  //   `)
+  //                                                           // will put VV ${location1} from form?
+  //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=seattle&key=${process.env.REACT_APP_API_KEY}
+  //   `)
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         console.log("response");
+  //         throw new Error(`${response.status}: ${response.statusText}`);
+  //       } else {
+  //         return response.json()
+  //       }
+  //     })
+  //     .then((jsonifiedResponse) => {
+  //       const latLng1 = (jsonifiedResponse.results[0].geometry.location);
+  //       console.log(latLng1);
+  //       setFirstLocation(latLng1)
           
-        })
-        setIsLoaded(true);   
-      // .catch((error) => {
-      //   setError(error.message)
-      //   setIsLoaded(true)
-      // });
-  }, [])
+  //       })
+  //       setIsLoaded(true);   
+  //     // .catch((error) => {
+  //     //   setError(error.message)
+  //     //   setIsLoaded(true)
+  //     // });
+  // }, [])
 
-  useEffect(() => {
-    console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=${location2}&key=${process.env.REACT_APP_API_KEY}
-    `)
-                                                          // VV will put ${location2}
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location2}&key=${process.env.REACT_APP_API_KEY}
-    `)
-      .then((response) => {
-        if (!response.ok) {
-          console.log("response");
-          throw new Error(`${response.status}: ${response.statusText}`);
-        } else {
-          return response.json()
-        }
-      })
-      .then((jsonifiedResponse) => {
-        const latLng2 = (jsonifiedResponse.results[0].geometry.location);
-        setSecondLocation(latLng2)
-        console.log(secondLocation);     
-        })
-        setIsLoaded(true);   
-  }, [])
+  // useEffect(() => {
+  //   console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=${location2}&key=${process.env.REACT_APP_API_KEY}
+  //   `)
+  //                                                         // VV will put ${location2}
+  //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location2}&key=${process.env.REACT_APP_API_KEY}
+  //   `)
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         console.log("response");
+  //         throw new Error(`${response.status}: ${response.statusText}`);
+  //       } else {
+  //         return response.json()
+  //       }
+  //     })
+  //     .then((jsonifiedResponse) => {
+  //       const latLng2 = (jsonifiedResponse.results[0].geometry.location);
+  //       setSecondLocation(latLng2)
+  //       console.log(secondLocation);     
+  //       })
+  //       setIsLoaded(true);   
+  // }, [])
   
   
-  const handleFindingResultCoordinates = (latLng1, latLng2) => {
-    let lat3 = (latLng1.lat + latLng2.lat) / 2
-    let lng3 = (latLng1.lng + latLng2.lng) / 2
-    const finalCoords = (lat3, lng3)
-    console.log(finalCoords);
-    setIsLoaded(true);
+  // const handleFindingResultCoordinates = (latLng1, latLng2) => {
+  //   let lat3 = (latLng1.lat + latLng2.lat) / 2
+  //   let lng3 = (latLng1.lng + latLng2.lng) / 2
+  //   const finalCoords = (lat3, lng3)
+  //   console.log(finalCoords);
+  //   setIsLoaded(true);
     
     
-  }
+  // }
 
-  const formSubmissionHandler = (e, location1, location2) => {
-    e.preventDefault();
-    handleFindingResultCoordinates();
-    setFormVisibleOnPage(!formVisibleOnPage);
-    return false;
-  }
+  
+  
   
   
   let currentlyVisibleState = null;
-  if (error) {
-    return <h1>Error: </h1>;
+  // if (error) {
+  //   return <h1>Error: </h1>;
 
-  } else if (!isLoaded) {
-    return <h1>...LOADING...</h1>;
-  } if (formVisibleOnPage) {
-    currentlyVisibleState = <Form onFormSubmission={formSubmissionHandler}/>
-  } else if (!!showResult) {
-    currentlyVisibleState = <Result resultLocation={showResult}/>
-  }
+  // } else if (!isLoaded) {
+  //   return <h1>...LOADING...</h1>;
+  // } if (formVisibleOnPage) {
+  //   currentlyVisibleState = <Form onFormSubmission={formSubmissionHandler}/>
+  // } else if (!!showResult) {
+  //   currentlyVisibleState = <Result resultLocation={showResult}/>
+  // }
   
   
     return (
