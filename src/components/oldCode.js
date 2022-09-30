@@ -1,3 +1,12 @@
+
+// Convert from degrees to radians
+// function degreesToRadians(degrees) {
+//   var radians = (degrees * Math.PI)/180;
+//   return radians;
+// }
+
+
+
 // const makeApiCall = async () => {
   //   let response;
     

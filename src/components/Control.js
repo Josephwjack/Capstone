@@ -22,6 +22,7 @@ function GetLocation() {
   useEffect(() => {
     console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=seattle&key=${process.env.REACT_APP_API_KEY}
     `)
+                                                            // will put VV ${location1} from form?
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=seattle&key=${process.env.REACT_APP_API_KEY}
     `)
       .then((response) => {
@@ -48,6 +49,7 @@ function GetLocation() {
   useEffect(() => {
     console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=new+york&key=${process.env.REACT_APP_API_KEY}
     `)
+                                                          // VV will put ${location2}
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=new+york&key=${process.env.REACT_APP_API_KEY}
     `)
       .then((response) => {
@@ -66,16 +68,17 @@ function GetLocation() {
         })
         setIsLoaded(true);   
   }, [])
-
-  setResult(firstLocation + secondLocation) / 2;
-  console.log(showResult);
+  
+  
   const handleFindingResultCoordinates = (firstLocation, secondLocation) => {
     let lat3 = (firstLocation.lat + secondLocation.lat) / 2
     let lng3 = (firstLocation.lng + secondLocation.lng) / 2
-    setResult(lat3, lng3)
-    console.log(lat3, lng3);
+    const finalCoords = (lat3, lng3)
+    console.log(finalCoords);
+    
     setIsLoaded(true);
-    handleFindingResultCoordinates();
+    return finalCoords;
+    
   }
 
   const formSubmissionHandler = (e, location1, location2) => {
