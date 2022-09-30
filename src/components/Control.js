@@ -51,54 +51,8 @@ function GetLocation() {
   }
   
 
-  // useEffect(() => {
-  //   console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=seattle&key=${process.env.REACT_APP_API_KEY}
-  //   `)
-  //                                                           // will put VV ${location1} from form?
-  //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=seattle&key=${process.env.REACT_APP_API_KEY}
-  //   `)
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         console.log("response");
-  //         throw new Error(`${response.status}: ${response.statusText}`);
-  //       } else {
-  //         return response.json()
-  //       }
-  //     })
-  //     .then((jsonifiedResponse) => {
-  //       const latLng1 = (jsonifiedResponse.results[0].geometry.location);
-  //       console.log(latLng1);
-  //       setFirstLocation(latLng1)
-          
-  //       })
-  //       setIsLoaded(true);   
-  //     // .catch((error) => {
-  //     //   setError(error.message)
-  //     //   setIsLoaded(true)
-  //     // });
-  // }, [])
 
-  // useEffect(() => {
-  //   console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=${location2}&key=${process.env.REACT_APP_API_KEY}
-  //   `)
-  //                                                         // VV will put ${location2}
-  //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location2}&key=${process.env.REACT_APP_API_KEY}
-  //   `)
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         console.log("response");
-  //         throw new Error(`${response.status}: ${response.statusText}`);
-  //       } else {
-  //         return response.json()
-  //       }
-  //     })
-  //     .then((jsonifiedResponse) => {
-  //       const latLng2 = (jsonifiedResponse.results[0].geometry.location);
-  //       setSecondLocation(latLng2)
-  //       console.log(secondLocation);     
-  //       })
-  //       setIsLoaded(true);   
-  // }, [])
+  
   
   
   // const handleFindingResultCoordinates = (latLng1, latLng2) => {
