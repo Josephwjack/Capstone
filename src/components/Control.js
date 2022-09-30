@@ -3,8 +3,7 @@ import { GoogleMap } from '@react-google-maps/api';
 import Geocode, { fromAddress } from 'react-geocode';
 import Form from './Form';
 import Result from './Result';
-import { map } from '@firebase/util';
-import { db } from './..firebase.js';
+import db  from '../firebase.js';
 import { collection, addDoc, doc, onSnapshot} from 'firebase/firestore';
 
 
@@ -18,6 +17,7 @@ function GetLocation() {
   
   
   async function GetData(){
+    
     const url1 = (`https://maps.googleapis.com/maps/api/geocode/json?address=seattle&key=${process.env.REACT_APP_API_KEY}`)
     const url2 = (`https://maps.googleapis.com/maps/api/geocode/json?address=new+york&key=${process.env.REACT_APP_API_KEY}`)
     
@@ -39,15 +39,36 @@ function GetLocation() {
     let resultCoordinates = {lat3, lng3};
     console.log(resultCoordinates);
     Object.values(resultCoordinates);
+
     setResult(resultCoordinates);
-    setIsLoaded(true);
+    
     
     
     
   }
-  const ResultLocation = () => {
-    GetData()
-
+  const makeApiCall = async (call) => {
+    GetData();
+    let response;
+    try {
+      response = await fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?,
+      location=${call.lat3}%${call.lng3}
+      &radius=1500
+      &key${process.env.REACT_APP_API_KEY}
+      `)
+    } catch(error){
+      console.log(error, "fetch error");
+    } let data;
+    try {
+      data = await response.json();
+    } catch(error){
+      console.log(error, "response error");
+    }
+    let venueList = data.results.map(e => {
+      return {name: e.name, rating: e.rating, vicinity: e.vicinity, location: e.geometry.location}
+    });
+    setResult(venueList);
+    setIsLoaded(true);
+  
   }
   
 

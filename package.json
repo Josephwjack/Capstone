@@ -15,7 +15,6 @@
     "react-dom": "^18.2.0",
     "react-geocode": "^0.2.3",
     "react-scripts": "5.0.1",
-    "redux-firestore": "^1.0.0",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
