@@ -1,34 +1,44 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
-
+import { Form } from 'react-bootstrap';
 
 
 function Form(props) {
-  const [firstLocation, setFirstLocation] = useState("seattle");
-  const [secondLocation, setSecondLocation] = useState("tempe, arizona");
+  const [firstLocation, setFirstLocation] = useState("");
+  const [secondLocation, setSecondLocation] = useState("");
   
   
+  function handleFirstLocationChange(e){
+    e.preventDefault();
+    setFirstLocation(e.target.value);
+  }
   
-  
-  
+  function handleSecondLocationChange(e){
+    e.preventDefault();
+    setSecondLocation(e.target.value);
+  }
   
   return (
     
     <React.Fragment>
       <h1>This is the Form</h1>
-        <form onSubmit={(e)=>props.onFormSubmission(e, firstLocation, secondLocation)}>
-        <input
-          type='text'
-          name='firstLocation'
-          onChange={(e) => setFirstLocation(e.target.value)}
-          />
-        <input
-          type='text'
-          name='secondLocation'
-          onChange={(e) => setSecondLocation(e.target.value)}
-          />
-        <button type='submit'>Find your halfway</button>
-      </form>
+        <Form onSubmit={(e)=>props.onFormSubmission(e, firstLocation, secondLocation)}>
+          <Form.Group>
+            <Form.Label>Select first location</Form.Label>
+            <Form.Control onChange={handleFirstLocationChange}
+              type='text'
+              name='firstLocation'
+              />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Select second location</Form.Label>
+            <Form.Control onChange={handleSecondLocationChange}
+              type='text'
+              name='secondLocation'
+              />
+          </Form.Group>
+          <button type='submit'>Find your halfway</button>
+        </Form>
     </React.Fragment>
   );
 }

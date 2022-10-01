@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GoogleMap } from '@react-google-maps/api';
-import Geocode, { fromAddress } from 'react-geocode';
+// import Geocode, { fromAddress } from 'react-geocode';
 import Form from './Form';
 import Result from './Result';
 import db  from '../firebase.js';
