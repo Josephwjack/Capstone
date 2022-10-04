@@ -4,8 +4,8 @@ import  Form  from 'react-bootstrap/Form';
 
 
 function LocationForm(props) {
-  const [location2, setLocation1] = useState(null);
-  const [location1, setLocation2] = useState(null);
+  const [location1, setLocation1] = useState(null);
+  const [location2, setLocation2] = useState(null);
   
   
   function handleFirstLocationChange(e){
@@ -49,6 +49,8 @@ function LocationForm(props) {
  
 LocationForm.propTypes = {
   onFormSubmission: PropTypes.func,
+  location1: PropTypes.string,
+  location2: PropTypes.string,
 };
 
 export default LocationForm;

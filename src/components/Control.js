@@ -16,16 +16,21 @@ function GetLocation() {
   const [error, setError] = useState(null);
   
   
-  const GetData = async (call) => {
+  async function GetData(call) {
     
     const url1 = (`https://maps.googleapis.com/maps/api/geocode/json?address=${call.location1}&key=${process.env.REACT_APP_API_KEY}`)
     const url2 = (`https://maps.googleapis.com/maps/api/geocode/json?address=${call.location2}&key=${process.env.REACT_APP_API_KEY}`)
-    
+    // const url3 = (`https://maps.googleapis.com/maps/api/place/nearbysearch/json?
+    // location=${call.lat3},${call.lng3}
+    // &radius=1500
+    // &type=restaurant
+    // &key=${process.env.REACT_APP_API_KEY}
+    // `)
     const responses = await Promise.all([fetch(url1), fetch(url2)])
     
     const data1 = await responses[0].json();
     const data2 = await responses[1].json();
-
+    // const data3 = await responses[2].json();
     const firstSet = data1.results.map( ele => {
       return {lat: ele.geometry.location.lat, lng: ele.geometry.location.lng}
     });
@@ -40,35 +45,36 @@ function GetLocation() {
     console.log(resultCoordinates);
     Object.values(resultCoordinates);
 
+    // let venueList = data3.results.map(e => {
+    //   return {name: e.name, rating: e.rating, vicinity: e.vicinity, location: e.geometry.location}
+    // });
     setResult(resultCoordinates);
-    
-    
-    
-    
-  }
-  const makeApiCall = async (call) => {
-    GetData();
-    
-    
-    const response = await fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?
-      location=${call.lat3}%${call.lng3}
-      &radius=1500
-      &key=${process.env.REACT_APP_API_KEY}
-      `)
-    
-    const data = await response.json();
-     
-    let venueList = data.results.map(e => {
-      return {name: e.name, rating: e.rating, vicinity: e.vicinity, location: e.geometry.location}
-    });
-    setResult(venueList);
     setIsLoaded(true);
-  
+     
+    
   }
+  // const makeApiCall = async (call) => {
+  //   GetData();
+    
+  //   const url3 = (`https://maps.googleapis.com/maps/api/place/nearbysearch/json?
+  //     location=${call.lat3}%${call.lng3}
+  //     &radius=1500
+  //     &key=${process.env.REACT_APP_API_KEY}
+  //     `)
+  //   const response = await Promise.all([fetch(url3)])
+  //   const data = await response.json();
+     
+  //   let venueList = data.results.map(e => {
+  //     return {name: e.name, rating: e.rating, vicinity: e.vicinity, location: e.geometry.location}
+  //   });
+  //   setResult(venueList);
+  //   setIsLoaded(true);
+  
+  // }
   
   const formSubmissionHandler = (e, location1, location2) => {
     e.preventDefault();
-    makeApiCall({
+    GetData({
       location1: location1,
       location2: location2,
     });
