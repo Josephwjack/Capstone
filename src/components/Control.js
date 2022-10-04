@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { GoogleMap } from '@react-google-maps/api';
 // import Geocode, { fromAddress } from 'react-geocode';
-import Form from './Form';
+import LocationForm from './LocationForm';
 import Result from './Result';
 import db  from '../firebase.js';
 import { collection, addDoc, doc, onSnapshot} from 'firebase/firestore';
@@ -16,10 +16,10 @@ function GetLocation() {
   const [error, setError] = useState(null);
   
   
-  async function GetData(){
+  const GetData = async (call) => {
     
-    const url1 = (`https://maps.googleapis.com/maps/api/geocode/json?address=seattle&key=${process.env.REACT_APP_API_KEY}`)
-    const url2 = (`https://maps.googleapis.com/maps/api/geocode/json?address=new+york&key=${process.env.REACT_APP_API_KEY}`)
+    const url1 = (`https://maps.googleapis.com/maps/api/geocode/json?address=${call.location1}&key=${process.env.REACT_APP_API_KEY}`)
+    const url2 = (`https://maps.googleapis.com/maps/api/geocode/json?address=${call.location2}&key=${process.env.REACT_APP_API_KEY}`)
     
     const responses = await Promise.all([fetch(url1), fetch(url2)])
     
@@ -48,21 +48,16 @@ function GetLocation() {
   }
   const makeApiCall = async (call) => {
     GetData();
-    let response;
-    try {
-      response = await fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?,
+    
+    
+    const response = await fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?
       location=${call.lat3}%${call.lng3}
       &radius=1500
-      &key${process.env.REACT_APP_API_KEY}
+      &key=${process.env.REACT_APP_API_KEY}
       `)
-    } catch(error){
-      console.log(error, "fetch error");
-    } let data;
-    try {
-      data = await response.json();
-    } catch(error){
-      console.log(error, "response error");
-    }
+    
+    const data = await response.json();
+     
     let venueList = data.results.map(e => {
       return {name: e.name, rating: e.rating, vicinity: e.vicinity, location: e.geometry.location}
     });
@@ -71,7 +66,17 @@ function GetLocation() {
   
   }
   
-
+  const formSubmissionHandler = (e, location1, location2) => {
+    e.preventDefault();
+    makeApiCall({
+      location1: location1,
+      location2: location2,
+    });
+  
+    
+    setFormVisibleOnPage(!formVisibleOnPage);
+    return false;
+  }
 
   
   
@@ -91,14 +96,16 @@ function GetLocation() {
   
   
   let currentlyVisibleState = null;
-  // if (error) {
-  //   return <h1>Error: </h1>;
+  if (error) {
+    return <h1>Error: </h1>;
 
   // } else if (!isLoaded) {
   //   return <h1>...LOADING...</h1>;
-  // } if (formVisibleOnPage) {
-  //   currentlyVisibleState = <Form onFormSubmission={formSubmissionHandler}/>
-  // } else if (!!showResult) {
+  }
+   if (formVisibleOnPage) {
+    currentlyVisibleState = <LocationForm onFormSubmission={formSubmissionHandler}/>
+  } 
+  // else if (!!showResult) {
   //   currentlyVisibleState = <Result resultLocation={showResult}/>
   // }
   
