@@ -11,12 +11,12 @@ import { collection, addDoc, doc, onSnapshot} from 'firebase/firestore';
 function GetLocation() {
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(true);
   const [showResult, setResult] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   
   
   async function GetData(call) {
-    
+    setLoading(true);
     const url1 = (`https://maps.googleapis.com/maps/api/geocode/json?address=${call.location1}&key=${process.env.REACT_APP_API_KEY}`)
     const url2 = (`https://maps.googleapis.com/maps/api/geocode/json?address=${call.location2}&key=${process.env.REACT_APP_API_KEY}`)
     
@@ -39,7 +39,7 @@ function GetLocation() {
     console.log(resultCoordinates);
     Object.values(resultCoordinates);
 
-    const url3 = (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat3},${lng3}&location_type=ROOFTOP&result_type=street_address&key=${process.env.REACT_APP_API_KEY}`
+    const url3 = (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat3},${lng3}&location_type=ROOFTOP&result_type=&key=${process.env.REACT_APP_API_KEY}`
        )
     const response = await Promise.all([fetch(url3)])
     const data3 = await response[0].json();
@@ -52,7 +52,7 @@ function GetLocation() {
     setResult(resultCoordinates);
     console.log(lat3, lng3);
     console.log(formattedAddress);
-    setIsLoaded(true);
+    setLoading(false);
      
     
   }
@@ -76,8 +76,8 @@ function GetLocation() {
   if (error) {
     return <h1>Error: </h1>;
 
-  // } else if (!isLoaded) {
-  //   return <h1>...LOADING...</h1>;
+  } else if (loading) {
+    return <h1>...LOADING...</h1>;
   }
    if (formVisibleOnPage) {
     currentlyVisibleState = <LocationForm onFormSubmission={formSubmissionHandler}/>
