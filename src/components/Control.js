@@ -70,22 +70,7 @@ function GetLocation() {
     return false;
   }
 
-  
-  
-  
-  // const handleFindingResultCoordinates = (latLng1, latLng2) => {
-  //   let lat3 = (latLng1.lat + latLng2.lat) / 2
-  //   let lng3 = (latLng1.lng + latLng2.lng) / 2
-  //   const finalCoords = (lat3, lng3)
-  //   console.log(finalCoords);
-  //   setIsLoaded(true);
-    
-    
-  // }
 
-  
-  
-  
   
   let currentlyVisibleState = null;
   if (error) {
