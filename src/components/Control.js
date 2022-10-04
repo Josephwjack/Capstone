@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { GoogleMap } from '@react-google-maps/api';
-// import Geocode, { fromAddress } from 'react-geocode';
 import LocationForm from './LocationForm';
 import Result from './Result';
 import db  from '../firebase.js';
@@ -20,17 +19,12 @@ function GetLocation() {
     
     const url1 = (`https://maps.googleapis.com/maps/api/geocode/json?address=${call.location1}&key=${process.env.REACT_APP_API_KEY}`)
     const url2 = (`https://maps.googleapis.com/maps/api/geocode/json?address=${call.location2}&key=${process.env.REACT_APP_API_KEY}`)
-    // const url3 = (`https://maps.googleapis.com/maps/api/place/nearbysearch/json?
-    // location=${call.lat3},${call.lng3}
-    // &radius=1500
-    // &type=restaurant
-    // &key=${process.env.REACT_APP_API_KEY}
-    // `)
+    
     const responses = await Promise.all([fetch(url1), fetch(url2)])
     
     const data1 = await responses[0].json();
     const data2 = await responses[1].json();
-    // const data3 = await responses[2].json();
+    
     const firstSet = data1.results.map( ele => {
       return {lat: ele.geometry.location.lat, lng: ele.geometry.location.lng}
     });
@@ -41,23 +35,34 @@ function GetLocation() {
     const lat3 = (firstSet[0].lat + secondSet[0].lat) / 2;
     const lng3 = (firstSet[0].lng + secondSet[0].lng) / 2;
     console.log(lat3);
-    let resultCoordinates = {lat3, lng3};
+    const resultCoordinates = {lat: lat3, lng: lng3};
     console.log(resultCoordinates);
     Object.values(resultCoordinates);
 
-    // let venueList = data3.results.map(e => {
-    //   return {name: e.name, rating: e.rating, vicinity: e.vicinity, location: e.geometry.location}
-    // });
-    setResult(resultCoordinates);
+    const url3 = (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat3},${lng3}&location_type=ROOFTOP&result_type=street_address&key=${process.env.REACT_APP_API_KEY}`
+       )
+    const response = await Promise.all([fetch(url3)])
+    const data3 = await response[0].json();
+     
+    
+    
+    let formattedAddress = data3.results.map(e => {
+      return {name: e.formatted_address}
+    });
+    setResult(formattedAddress);
+    console.log(lat3, lng3);
+    console.log(formattedAddress);
     setIsLoaded(true);
      
     
   }
+
+ 
   // const makeApiCall = async (call) => {
-  //   GetData();
+    
     
   //   const url3 = (`https://maps.googleapis.com/maps/api/place/nearbysearch/json?
-  //     location=${call.lat3}%${call.lng3}
+  //     location=${resultCoordinates}
   //     &radius=1500
   //     &key=${process.env.REACT_APP_API_KEY}
   //     `)
@@ -78,6 +83,7 @@ function GetLocation() {
       location1: location1,
       location2: location2,
     });
+    // makeApiCall();
   
     
     setFormVisibleOnPage(!formVisibleOnPage);
