@@ -56,26 +56,6 @@ function GetLocation() {
      
     
   }
-
- 
-  // const makeApiCall = async (call) => {
-    
-    
-  //   const url3 = (`https://maps.googleapis.com/maps/api/place/nearbysearch/json?
-  //     location=${resultCoordinates}
-  //     &radius=1500
-  //     &key=${process.env.REACT_APP_API_KEY}
-  //     `)
-  //   const response = await Promise.all([fetch(url3)])
-  //   const data = await response.json();
-     
-  //   let venueList = data.results.map(e => {
-  //     return {name: e.name, rating: e.rating, vicinity: e.vicinity, location: e.geometry.location}
-  //   });
-  //   setResult(venueList);
-  //   setIsLoaded(true);
-  
-  // }
   
   const formSubmissionHandler = (e, location1, location2) => {
     e.preventDefault();
@@ -83,7 +63,7 @@ function GetLocation() {
       location1: location1,
       location2: location2,
     });
-    // makeApiCall();
+    
   
     
     setFormVisibleOnPage(!formVisibleOnPage);
