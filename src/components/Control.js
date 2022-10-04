@@ -49,7 +49,7 @@ function GetLocation() {
     let formattedAddress = data3.results.map(e => {
       return {name: e.formatted_address}
     });
-    setResult(formattedAddress);
+    setResult(resultCoordinates);
     console.log(lat3, lng3);
     console.log(formattedAddress);
     setIsLoaded(true);
