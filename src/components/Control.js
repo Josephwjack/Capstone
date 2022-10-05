@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import LocationForm from './components/LocationForm';
-import Result from './components/Result';
-import db  from './firebase.js';
+import LocationForm from './LocationForm';
+import Result from './Result';
+import db  from '../firebase';
 import { collection, addDoc, doc, onSnapshot} from 'firebase/firestore';
 
 
@@ -12,6 +12,7 @@ function GetLocation() {
   const [showResult, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  
   
   
   async function GetData(call) {

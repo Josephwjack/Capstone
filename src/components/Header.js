@@ -9,7 +9,18 @@ function Header(){
 
   
   return (
-   <h1>Header for Between Us</h1>
+    <React.Fragment>
+    <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand>Quiz of Choice</Navbar.Brand>
+          <Nav className="m-2 p-10">                
+            <Nav.Link href="/">Home</Nav.Link>                        
+            <Nav.Link href="/sign-in">Sign In</Nav.Link>
+          
+          </Nav>
+        </Container>
+      </Navbar>
+    </React.Fragment>
   );
 }
 
