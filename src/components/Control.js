@@ -12,7 +12,8 @@ function GetLocation() {
   const [showResult, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  
+  const [lat, setLat] = useState(null);
+  const [ lng, setLng] = useState(null);
   
   
   async function GetData(call) {
@@ -53,7 +54,8 @@ function GetLocation() {
     console.log(lat3, lng3);
     console.log(formattedAddress);
     setLoading(false);
-    
+    setLat(lat3);
+    setLng(lng3);
     
   }
   
@@ -69,26 +71,28 @@ function GetLocation() {
   }
 
 
-  
-  let currentlyVisibleState = null;
-  if (error) {
-    return <h1>Error: {error.message}</h1>;
+    let currentlyVisibleState = null;
+    let buttonText = null;
 
-  } else if (loading) {
+  
+  if (error) {
+    currentlyVisibleState = <p>There was an error: {error}</p>
+
+  } else if (!loading) {
     return <h1>...LOADING...</h1>;
   }
    if (formVisibleOnPage) {
     currentlyVisibleState = <LocationForm onFormSubmission={formSubmissionHandler}/>
   } 
-  // else if (!!showResult) {
-  //   currentlyVisibleState = <Result resultLocation={showResult}/>
-  // }
+   else if (!!showResult) {
+    currentlyVisibleState = <Result resultLocation={showResult}/>
+  }
   
   
     return (
       <React.Fragment>
         
-        <h1>Return</h1>
+        
         {currentlyVisibleState}
       </React.Fragment>
     )

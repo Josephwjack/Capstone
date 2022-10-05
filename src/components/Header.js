@@ -7,16 +7,16 @@ import Container from 'react-bootstrap/Container';
 
 function Header(){
   const [redirect, setRedirect] = useState(null);
-  function d
+  
   
   return (
     <React.Fragment>
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark" width="auto">
         <Container>
           <Navbar.Brand>Between Us</Navbar.Brand>
           <Nav className="m-3 p-10">                
             <Nav.Link href="/">Home</Nav.Link>                        
-            <Nav.Link href="/sign-in">Sign In</Nav.Link>
+            <Nav.Link href="/sign-in">Sign-in/Sign-out</Nav.Link>
             <Nav.Link href="/sign-up">Register</Nav.Link>
           </Nav>
         </Container>

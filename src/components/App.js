@@ -20,7 +20,6 @@ function App() {
             <Route path="/sign-up" element={<SignUp />} />
             <Route exact path="/" element={<Control />} />       
           </Routes>
-
           <Map/>
         </Router>
         </React.Fragment>
