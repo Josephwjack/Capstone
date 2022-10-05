@@ -13,7 +13,7 @@ function GetLocation() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [lat, setLat] = useState(null);
-  const [ lng, setLng] = useState(null);
+  const [lng, setLng] = useState(null);
   
   
   async function GetData(call) {
@@ -35,6 +35,8 @@ function GetLocation() {
     
     const lat3 = (firstSet[0].lat + secondSet[0].lat) / 2;
     const lng3 = (firstSet[0].lng + secondSet[0].lng) / 2;
+    setLat(lat3);
+    setLng(lng3);
     console.log(lat3);
     const resultCoordinates = {lat: lat3, lng: lng3};
     console.log(resultCoordinates);
@@ -48,14 +50,13 @@ function GetLocation() {
     
     
     let formattedAddress = data3.results.map(e => {
-      return {name: e.name[2]}
+      return {name: e.formatted_address}
     });
-    setResult(resultCoordinates);
+    setResult(formattedAddress);
     console.log(lat3, lng3);
     console.log(formattedAddress);
     setLoading(false);
-    setLat(lat3);
-    setLng(lng3);
+    
     
   }
   
@@ -72,20 +73,20 @@ function GetLocation() {
 
 
     let currentlyVisibleState = null;
-    let buttonText = null;
+    
 
   
   if (error) {
     currentlyVisibleState = <p>There was an error: {error}</p>
 
-  } else if (!loading) {
+  } else if (loading) {
     return <h1>...LOADING...</h1>;
   }
    if (formVisibleOnPage) {
     currentlyVisibleState = <LocationForm onFormSubmission={formSubmissionHandler}/>
   } 
    else if (!!showResult) {
-    currentlyVisibleState = <Result resultLocation={showResult}/>
+    currentlyVisibleState = <Result resultLocation={showResult}  />
   }
   
   

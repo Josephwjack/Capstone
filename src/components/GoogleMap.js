@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import GoogleMapReact from 'google-map-react';
 import { Icon } from '@iconify/react'
 import locationIcon from '@iconify/icons-mdi/map-marker';
@@ -11,7 +11,7 @@ export const LocationPin = ({ resultCoordinates }) => (
   </div>
 )
 
-function Map(){
+function GoogleMap(){
   const defaultProps = {
     center: {
       lat: 40.915488,
@@ -29,8 +29,8 @@ function Map(){
         defaultZoom={defaultProps.zoom}
       >
         <LocationPin
-          lat={{lat3}}
-          lng={{lng3}}
+          lat={40.915488}
+          lng={-96.677629}
           text={`MidPoint`}
         />
       </GoogleMapReact>
@@ -38,5 +38,5 @@ function Map(){
   );
   }
 
-export default Map;
+export default GoogleMap;
 

@@ -21,7 +21,7 @@ function LocationForm(props) {
   return (
     
     <React.Fragment>
-      <h1>This is the Form</h1>
+      <h1>Find the midpoint between you and a friend</h1>
         <Form onSubmit={(e)=>props.onFormSubmission(e, location1, location2)}>
           <Form.Group className="mb-3" controlId="firstLocation">
             <Form.Label>Select first location</Form.Label>
@@ -39,7 +39,7 @@ function LocationForm(props) {
               placeholder="Enter second location"
               />
           </Form.Group>
-          <button type='submit'>Find your halfway</button>
+          <button type='submit'>Go!</button>
         </Form>
     </React.Fragment>
   );
