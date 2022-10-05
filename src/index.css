@@ -28,9 +28,34 @@ body {
   height:fit-content;
   text-align: center;
   justify-content: center;
-  justify-content: space-between;
-  
+ 
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+ 100% { opacity: 1;}
+}
+
+
+@keyframes fadeIn {
+ 0% {opacity: 0;}
+ 100% { opacity: 1;}
 
 }
+.splash {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+ 
+  display:flex;
+  animation: fadeIn 5s;
+  animation-name: fadeIn;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+}
+
+  
+
 
 
