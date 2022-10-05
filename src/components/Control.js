@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { GoogleMap } from '@react-google-maps/api';
-import LocationForm from './LocationForm';
-import Result from './Result';
-import db  from '../firebase.js';
+import LocationForm from './components/LocationForm';
+import Result from './components/Result';
+import db  from './firebase.js';
 import { collection, addDoc, doc, onSnapshot} from 'firebase/firestore';
 
 
@@ -39,7 +38,7 @@ function GetLocation() {
     console.log(resultCoordinates);
     Object.values(resultCoordinates);
 
-    const url3 = (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat3},${lng3}&location_type=ROOFTOP&result_type=&key=${process.env.REACT_APP_API_KEY}`
+    const url3 = (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat3},${lng3}&key=${process.env.REACT_APP_API_KEY}`
        )
     const response = await Promise.all([fetch(url3)])
     const data3 = await response[0].json();
@@ -64,8 +63,6 @@ function GetLocation() {
       location2: location2,
     });
     
-  
-    
     setFormVisibleOnPage(!formVisibleOnPage);
     return false;
   }
@@ -74,7 +71,7 @@ function GetLocation() {
   
   let currentlyVisibleState = null;
   if (error) {
-    return <h1>Error: </h1>;
+    return <h1>Error: {error.message}</h1>;
 
   } else if (loading) {
     return <h1>...LOADING...</h1>;
@@ -98,12 +95,5 @@ function GetLocation() {
  }
 
 
-  
-
-  
-
- 
-    
-  
 
 export default GetLocation;

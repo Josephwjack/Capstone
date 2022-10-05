@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import '../Assets/css/map.css';
-import Control from './Control';
+import Control from '../Control';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Header from './Header';
@@ -46,7 +46,7 @@ function App() {
   return (
     <React.Fragment>
       <Control/>
-      <SimpleMap/>
+      <Map/>
     </React.Fragment>
   );
 }

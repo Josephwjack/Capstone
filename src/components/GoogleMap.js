@@ -11,7 +11,7 @@ export const LocationPin = ({ text }) => (
   </div>
 )
 
-function SimpleMap(){
+function Map(){
   const defaultProps = {
     center: {
       lat: 40.915488,
@@ -38,5 +38,5 @@ function SimpleMap(){
   );
   }
 
-export default SimpleMap;
+export default Map;
 
