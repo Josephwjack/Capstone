@@ -9,11 +9,11 @@ import { collection, addDoc, doc, onSnapshot} from 'firebase/firestore';
 
 function GetLocation() {
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(true);
-  const [showResult, setResult] = useState(null);
+  const [showResult, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
+  const [coordinates, setCoordinates] = useState(null);
+
   
   
   async function GetData(call) {
@@ -35,26 +35,24 @@ function GetLocation() {
     
     const lat3 = (firstSet[0].lat + secondSet[0].lat) / 2;
     const lng3 = (firstSet[0].lng + secondSet[0].lng) / 2;
-    setLat(lat3);
-    setLng(lng3);
-    console.log(lat3);
     const resultCoordinates = {lat: lat3, lng: lng3};
-    console.log(resultCoordinates);
+    
     Object.values(resultCoordinates);
+    setCoordinates(resultCoordinates);
 
-    const url3 = (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat3},${lng3}&key=${process.env.REACT_APP_API_KEY}`
+    const url3 = (`https://maps.googleapis.com/maps/api/place/nearbysearch/json?types=restaurant&location=${lat3},${lng3}&radius=10000&key=${process.env.REACT_APP_API_KEY}`
        )
     const response = await Promise.all([fetch(url3)])
     const data3 = await response[0].json();
      
     
-    
-    let formattedAddress = data3.results.map(e => {
-      return {name: e.formatted_address}
+    console.log(data3);
+    let restaurantList = data3.results.map(e => {
+      return {name: e.name, rating: e.rating, vicinity: e.vicinity, location: e.geometry.location}
     });
-    setResult(formattedAddress);
-    console.log(lat3, lng3);
-    console.log(formattedAddress);
+    setResult(restaurantList);
+    console.log(coordinates);
+    console.log(restaurantList);
     setLoading(false);
     
     
@@ -86,14 +84,12 @@ function GetLocation() {
     currentlyVisibleState = <LocationForm onFormSubmission={formSubmissionHandler}/>
   } 
    else if (!!showResult) {
-    currentlyVisibleState = <Result resultLocation={showResult}  />
-  }
+    currentlyVisibleState = <Result location={coordinates} resultList={showResult}  />
   
+   }
   
     return (
-      <React.Fragment>
-        
-        
+      <React.Fragment>  
         {currentlyVisibleState}
       </React.Fragment>
     )

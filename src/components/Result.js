@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
-import { Map } from './GoogleMap';
+import { LocationPin, Map } from './GoogleMap';
 
-const Result = ({resultLocation}) => {
-  const[final, setFinal] = useState(resultLocation)
-  setFinal(resultLocation)
+const Result = ({resultList}) => {
+  const[choice, setChoice] = useState(resultList[Math.floor(Math.random() * resultList.length)]);
+  const place = () => {
+    setChoice(resultList[Math.floor(Math.random() * resultList.length)])
+  };
+  
+  
   
 
   return (
-    <div>
-      <h5>{final.name}</h5>
+    <React.Fragment>
+      <h5>Wanna meet here?</h5>
+      <h1>{choice.name}</h1>
+      <h5>{choice.rating}</h5>
+      <h5>Location: {choice.vicinity}</h5>
+
+      <button onClick={()=>place()}>Pick a new spot</button>
       
-    </div>
-    
+      
+      
+      {/* <LocationPin lat={final.lat} lng={final.lng}/> */}
+     
+      
+      {/* <button onClick={setFinal(null)}> new search</button> */}
+      </React.Fragment>
   )
 }
 

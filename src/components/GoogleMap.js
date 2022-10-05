@@ -5,13 +5,14 @@ import locationIcon from '@iconify/icons-mdi/map-marker';
 import '../map.css';
 
 export const LocationPin = ({ resultCoordinates }) => (
+  
   <div className="pin">
     <Icon icon={locationIcon} className="pin-icon" />
     <p className="pin-icon">{resultCoordinates}</p>
   </div>
 )
 
-function GoogleMap(){
+function Map() {
   const defaultProps = {
     center: {
       lat: 40.915488,
@@ -38,5 +39,5 @@ function GoogleMap(){
   );
   }
 
-export default GoogleMap;
+export default Map;
 

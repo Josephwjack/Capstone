@@ -8,7 +8,9 @@ import Container from 'react-bootstrap/Container';
 
 function Header(){
   
-  
+  function gitHub(){
+    window.location='https://github.com/Josephwjack/between-us';
+  }
   
   return (
     <React.Fragment>
@@ -19,6 +21,7 @@ function Header(){
             <Nav.Link href="/">Home</Nav.Link>                        
             <Nav.Link href="/sign-in">Login</Nav.Link>
             <Nav.Link href="/sign-up">Register</Nav.Link>
+            <Link onClick={()=>gitHub()}>GitHub Repo</Link>
           </Nav>
         </Container>
       </Navbar>
