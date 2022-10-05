@@ -23,7 +23,7 @@ function SignUp(){
 
   return (
     <React.Fragment>
-      <div>
+      <div className="formStyle">
       <Form onSubmit={doSignUp}>
       <h1>Sign up</h1>
       {signUpSuccess}

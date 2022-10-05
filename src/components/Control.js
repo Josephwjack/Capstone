@@ -81,8 +81,8 @@ function GetLocation() {
     return (
       <div className="splash"><a href="/sign-in">
         <img className="splashImg animated fadeIn" src="https://iili.io/QBIlfa.md.png" alt="logo" />
+        <h1 style={{textAlign: 'center'}}>Please Sign In</h1>
         </a>
-        {/* <h1>Please Sign In</h1> */}
       </div>
       
       

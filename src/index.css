@@ -24,12 +24,16 @@ body {
 
 .formStyle {
   width: auto;
+  padding: 3rem;
   margin: 10rem;
+  margin-top: auto;
   height:fit-content;
   text-align: center;
   justify-content: center;
  
 }
+
+
 
 @-webkit-keyframes fadeIn {
   0% {opacity: 0;}
@@ -43,11 +47,11 @@ body {
 
 }
 .splash {
-  width: 100vw;
+  width: 600px;
   height: 100vh;
-  position: fixed;
- 
-  display:flex;
+  position: relative;
+  padding-left: 14rem;
+  display: flex;
   animation: fadeIn 5s;
   animation-name: fadeIn;
   animation-duration: 4s;

@@ -35,12 +35,13 @@ function SignIn(){
 
   return (
     <React.Fragment>
-      
+      <div className="formStyle">
       <Form  onSubmit={doSignIn}>
       <h1>Sign In</h1>
       {signInSuccess}
+      <br />
       <Form.Group className="mb-3" controlId="signinEmail">
-        <Form.Control
+        <Form.Control 
           type='signinEmail'
           name='signinEmail'
           placeholder='email' />
@@ -60,6 +61,7 @@ function SignIn(){
       <br />
       </div>
       <Button onClick={doSignOut}>Sign out</Button>
+      </div>
     </React.Fragment>
       
   );
