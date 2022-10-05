@@ -47,13 +47,13 @@ function GetLocation() {
     
     
     let formattedAddress = data3.results.map(e => {
-      return {name: e.formatted_address}
+      return {name: e.name[2]}
     });
     setResult(resultCoordinates);
     console.log(lat3, lng3);
     console.log(formattedAddress);
     setLoading(false);
-     
+    
     
   }
   

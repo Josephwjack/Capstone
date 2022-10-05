@@ -4,10 +4,10 @@ import { Icon } from '@iconify/react'
 import locationIcon from '@iconify/icons-mdi/map-marker';
 import '../map.css';
 
-export const LocationPin = ({ text }) => (
+export const LocationPin = ({ resultCoordinates }) => (
   <div className="pin">
     <Icon icon={locationIcon} className="pin-icon" />
-    <p className="pin-text">{text}</p>
+    <p className="pin-icon">{resultCoordinates}</p>
   </div>
 )
 
@@ -29,8 +29,8 @@ function Map(){
         defaultZoom={defaultProps.zoom}
       >
         <LocationPin
-          lat={39.8283}
-          lng={98.5795}
+          lat={{lat3}}
+          lng={{lng3}}
           text={`MidPoint`}
         />
       </GoogleMapReact>

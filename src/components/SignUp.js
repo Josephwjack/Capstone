@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { auth } from "./../firebase.js";
-import createUserWithEmailAndPassword from "firebase/auth";
+import { Redirect } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 function SignUp(){
   const [signUpSuccess, setSignUpSuccess] = useState(null);
+  const [redirect, setRedirect] = useState(null);
 
   const doSignUp = (event) => {
     event.preventDefault();
@@ -14,6 +16,7 @@ function SignUp(){
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setSignUpSuccess(`You've successfully signed up, ${userCredential.user.email}!`) 
+        .setRedirect(<Redirect to='/signIn' />);
       })
       .catch((error) => {
         setSignUpSuccess(`There was an error signing up: ${error.message}!`)
@@ -22,13 +25,12 @@ function SignUp(){
 
   return (
     <React.Fragment>
+      {redirect}
       <div>
       <Form onSubmit={doSignUp}>
       <h1>Sign up</h1>
       {signUpSuccess}
       <Form.Group className="mb-3 justify-content-center" controlId="email">
-      {/* <form onSubmit={doSignUp}> */}
-        {/* <input */}
           <Form.Control type='email'
           name='email'
           placeholder='email' />
