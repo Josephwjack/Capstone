@@ -1,37 +1,42 @@
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
-// import GoogleMapReact from 'google-map-react';
+import React from 'react';
+import GoogleMapReact from 'google-map-react';
+import { Icon } from '@iconify/react'
+import locationIcon from '@iconify/icons-mdi/map-marker';
+import './map.css';
 
-// const Wrapper = styled.main`
-//   width: 100%;
-//   height: 100%;
-// `;
+export const LocationPin = ({ text }) => (
+  <div className="pin">
+    <Icon icon={locationIcon} className="pin-icon" />
+    <p className="pin-text">{text}</p>
+  </div>
+)
 
-// const GoogleMap = ({ children, ...props }) => (
-//   <Wrapper>
-//     <GoogleMapReact
-//       bootstrapURLKeys={{
-//         key: process.env.REACT_APP_API_KEY,
-//       }}
-//       {...props}
-//     >
-//       {children}
-//     </GoogleMapReact>
-//   </Wrapper>
-// );
+function SimpleMap(){
+  const defaultProps = {
+    center: {
+      lat: 40.915488,
+      lng:  -96.677629
+    },
+    zoom: 4
+  };
 
-// GoogleMap.propTypes = {
-//   children: PropTypes.oneOfType([
-//     PropTypes.node,
-//     PropTypes.arrayOf(PropTypes.node),
-//   ]),
-// };
+  return (
 
-// GoogleMap.defaultProps = {
-//   children: null,
-// };
+    <div style={{ height: '50vh', width: '100%' }}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY }}
+        defaultCenter={defaultProps.center}
+        defaultZoom={defaultProps.zoom}
+      >
+        <LocationPin
+          lat={39.8283}
+          lng={98.5795}
+          text={`MidPoint`}
+        />
+      </GoogleMapReact>
+    </div>
+  );
+  }
 
-// export default GoogleMap;
-
+export default SimpleMap;
 
