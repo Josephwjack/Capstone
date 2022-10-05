@@ -6,7 +6,7 @@
 <hr/>
 
 ## Description
-Between Us takes the input of two addresses and finds the halfway point to meetup and displays points of interest. Filter points of interest based on where you'd like to meetup nearby those coordinates.
+Between Us takes the input of two addresses and finds the halfway point to meetup and displays points of interest. Get a randomly selected meetup spot, or keep clicking until something sounds good.
 <hr/>
 
 ## Component Diagrams
@@ -34,9 +34,6 @@ Between Us takes the input of two addresses and finds the halfway point to meetu
 
 * 10:22: Researching documentation on Api and how to implement (and how to make multiple calls / change data before final call)
 * 10:45: For dynamic requests google has a constructor and method built in that returns an object literal - looking into that
-
-
-
 
 ## Logistics
 

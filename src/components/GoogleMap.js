@@ -11,7 +11,13 @@ export const LocationPin = ({ resultCoordinates }) => (
     <p className="pin-icon">{resultCoordinates}</p>
   </div>
 )
-
+const mapStyles = {
+  width: "99vw",
+  height: "auto",
+  frameborder: "0",
+  style: "border:0",
+  margin: "0 auto",
+}
 function Map() {
   const defaultProps = {
     center: {
@@ -23,7 +29,7 @@ function Map() {
 
   return (
 
-    <div style={{ height: '50vh', width: '100%' }}>
+    <div style={mapStyles}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY }}
         defaultCenter={defaultProps.center}

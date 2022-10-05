@@ -8,6 +8,7 @@ body {
   width:100vw;
   margin: 0 auto;
   padding: 0;
+  text-align: center;
 }
 
 .formColor {
@@ -15,8 +16,21 @@ body {
 }
 
 .cardStyle {
-  width: 'auto';
- justify-content: 'center';
+  width: auto;
+ justify-content: center;
  text-align: center;
  background-color: rgb(195, 195, 195);
 }
+
+.formStyle {
+  width: auto;
+  margin: 10rem;
+  height:fit-content;
+  text-align: center;
+  justify-content: center;
+  justify-content: space-between;
+  
+
+}
+
+

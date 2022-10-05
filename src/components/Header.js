@@ -14,7 +14,7 @@ function Header(){
   
   return (
     <React.Fragment>
-    <Navbar bg="dark" variant="dark" width="auto">
+    <Navbar bg="dark" variant="dark" width="100">
         <Container>
           <Navbar.Brand>Between Us</Navbar.Brand>
           <Nav className="m-3 p-10">                

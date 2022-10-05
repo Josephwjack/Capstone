@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { LocationPin, Map } from './GoogleMap';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+// import { Input } from 'reactstrap';
+import styled from 'styled-components';
 
 const Result = ({resultList}) => {
   const[choice, setChoice] = useState(resultList[Math.floor(Math.random() * resultList.length)]);
@@ -12,14 +16,15 @@ const Result = ({resultList}) => {
 
   return (
     <React.Fragment>
-      <h5>Wanna meet here?</h5>
-      <h1>{choice.name}</h1>
-      <h5>{choice.rating}</h5>
+      <Card className="cardStyle" >
+      <Card.Title><h5>How about?</h5></Card.Title>
+      <Card.Body><h1>{choice.name}</h1>
+      <h5>Rating: {choice.rating}/5</h5>
       <h5>Location: {choice.vicinity}</h5>
-
-      <button onClick={()=>place()}>Pick a new spot</button>
+      </Card.Body>
+      <Button onClick={()=>place()}>Pick a new spot</Button>
       
-      
+      </Card>
       
       {/* <LocationPin lat={final.lat} lng={final.lng}/> */}
      

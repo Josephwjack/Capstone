@@ -8,22 +8,26 @@ import SignUp from './SignUp';
 import Header from './Header';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
+import { Grommet } from 'grommet';
 
 function App() {
   return (
-    <Container>
-      <React.Fragment>    
+    
+    <React.Fragment> 
+      
         <Router>
           <Header />
+        <Container>
           <Routes>
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route exact path="/" element={<Control />} />       
           </Routes>
+        </Container>
           <Map/>
         </Router>
+         
         </React.Fragment>
-        </Container>
   );
 }
 
