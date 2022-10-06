@@ -30,10 +30,20 @@ body {
   height:fit-content;
   text-align: center;
   justify-content: center;
- 
 }
 
+.loading {
+  align-items: center;
+}
 
+.Control {
+  text-align: center;
+}
+.noWrap{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
 
 @-webkit-keyframes fadeIn {
   0% {opacity: 0;}
@@ -47,11 +57,13 @@ body {
 
 }
 .splash {
-  width: 600px;
+  width: 100vw;
   height: 100vh;
-  position: relative;
-  padding-left: 14rem;
+  margin: auto;
+  
   display: flex;
+  margin-left: 22rem;
+  
   animation: fadeIn 5s;
   animation-name: fadeIn;
   animation-duration: 4s;

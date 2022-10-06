@@ -16,12 +16,12 @@ function App() {
     <React.Fragment> 
       
         <Router>
-          <Header />
         <Container>
+          <Header />
           <Routes>
             <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route exact path="/" element={<Control />} />       
+            <Route path="/sign-up" element={<SignUp />} /> 
+            <Route exact path="/" element={<Control />} />                  
           </Routes>
         </Container>
           <Map/>

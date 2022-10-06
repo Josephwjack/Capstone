@@ -77,17 +77,17 @@ function GetLocation() {
     return false;
   }
 
-  if (auth.currentUser == null && loading === false) {
-    return (
-      <div className="splash"><a href="/sign-in">
-        <img className="splashImg animated fadeIn" src="https://iili.io/QBIlfa.md.png" alt="logo" />
-        <h1 style={{textAlign: 'center'}}>Please Sign In</h1>
-        </a>
-      </div>
+  // <div className="splash"><a href="/sign-in">
+  //   <img className="splashImg animated fadeIn" src="https://iili.io/QBIlfa.md.png" alt="logo" />
+  //   <h1 style={{textAlign: 'center'}}>Please Sign In</h1>
+  //   </a>
+  // </div>
+  // if (auth.currentUser == null && loading === false) {
+  //   return (
       
       
-    )
-  } else if (auth.currentUser != null) {
+  //   )
+  // } else if (auth.currentUser != null) {
     
     let currentlyVisibleState = null;
 
@@ -111,7 +111,7 @@ function GetLocation() {
         {currentlyVisibleState}
       </React.Fragment>
     );
-  }
+  // }
 }
  
 
