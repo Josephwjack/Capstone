@@ -48,8 +48,9 @@ function GetLocation() {
     Object.values(resultCoordinates);
     setCoordinates(resultCoordinates);
 
-    const url3 = (`https://maps.googleapis.com/maps/api/place/nearbysearch/json?types=restaurant&location=${lat3},${lng3}&radius=20000&key=${process.env.REACT_APP_API_KEY}`
-       )
+    const url3 = (`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?types=restaurant&location=${lat3},${lng3}&radius=20000&key=${process.env.REACT_APP_API_KEY}`
+      )
+
     const response = await Promise.all([fetch(url3)])
     const data3 = await response[0].json();
      

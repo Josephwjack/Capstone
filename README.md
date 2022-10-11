@@ -53,6 +53,7 @@ $ cd ~/between-us
 ```
 $ npm install
 ```
+
 5. Run the application to view in your browser with
 ```
 $ npm run start
@@ -64,7 +65,7 @@ $ npm run start
 
 ## Known Bugs
 
-- S
+- 
 - 
 
 <hr />
