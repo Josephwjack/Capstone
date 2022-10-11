@@ -74,7 +74,7 @@ function GetLocation() {
     });
     
     setFormVisibleOnPage(!formVisibleOnPage);
-    return false;
+    
   }
 
   // <div className="splash"><a href="/sign-in">
